@@ -40,3 +40,41 @@ function attachToolsEvent() {
     });
 }
 ```
+
+## ACTION DES OUTILS SUR LE CHAMPS
+
+Toujours dans la même fonction, on crée un nouveau `addEventListenner`sur les `field-parts`.
+```
+    document.querySelectorAll("field-parts").forEach((field_part) => {
+        field_part.addEventListener("click", (event) => {
+```
+Et pour chaque `field-part` on regarde quel outil à été sélectionné avant pour déduire quel classe est à ajouter et/ou retirer sur le champ.
+
+### LABOURER
+```
+            if (toolSelected === "tool-hoe") {    
+                event.target.classList.add("farmland");
+                event.target.classList.remove("grass");}
+```
+### ARROSER
+```
+            else if (toolSelected === "tool-water" && event.target.classList.contains("farmland")) {
+                event.target.classList.add("hydrated");
+                setTimeout(() => {event.target.classList.remove("hydrated");}, 10000);}
+```
+### SEMER
+```
+ else if (toolSelected === "tool-sow" && (event.target.classList.contains("farmland")) || (event.target.classList.contains("hydrated")) && event.target.dataset.seed === "0"){                 
+                event.target.dataset.seed = "1";
+                setInterval(grow, 1000) ;}     //setInterval permet de répéter l'appel d'une fonction à intervalles réguliers (en ms)
+```
+### MOISSONNER
+```
+else if (toolSelected === "tool-harvest" && event.target.dataset.seed === "7") {        
+                event.target.dataset.seed = "0";
+                document.getElementById("stock-wheat").innerText = parseInt(document.getElementById("stock-wheat").innerText) + 1;
+            }
+```
+Ici on utilise `element.innerText = ""` pour afficher du texte à l'intérieur du container. `partseInt` nous permet de récupérer le stock actuel de blé en entier et pas au format texte, affin de lui ajouter 1 à chaque fois qu'on moissonne.
+
+
