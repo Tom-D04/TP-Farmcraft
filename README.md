@@ -1,6 +1,6 @@
 # TP-Farmcraft
 
-<span style="color:blue" >**OBJECTIFS**</span>
+<span style="color:blue" > **OBJECTIFS** </span>
 
 Réaliser un petit jeu dans lequel on ppurra cultiver des champs de blé.
 Utiliser JavaScript pour manipuler le DOM et déclencher des événements à intervalles réguliers.
