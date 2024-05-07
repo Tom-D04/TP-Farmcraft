@@ -24,6 +24,7 @@ function generateFields() {
 
 ## SELECTION DES OUTILS
 
+Pour chaque outil, on attend de voir lorsque l'utilisateur clique dessus et quand c'est le cas, on ajoute à l'outil cliqué (`event.target`) la classe "active" avec `classList.add("active"). Pour que l'on puisse sélectionner un seul outil à la fois, j'ai choisi de supprimer la classe "active" de tous les outils quand l'utilisateur clique sur l'un d'eux, avant d'ajouter cette classe à l'outil choisi. Enfin il ne faut pas oublier d'enregistrer l'outil cliqué (par son id) pour savoir quelle action effectuer sur les champs par la suite.
 
 ```
 function attachToolsEvent() {
